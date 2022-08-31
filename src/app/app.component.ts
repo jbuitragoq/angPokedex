@@ -8,9 +8,12 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
   title = 'cifradoAfin';
-  public a: number = 5;
-  public b: number = 8;
+  public a!: number;
+  public b!: number;
   public n: number = 0;
+  public textACifrar = ""
+  public textValid = ""
+  public encyptMessage: String = '';
   public mcd: any;
 
   public abecedario = new Map<string, number>([
@@ -20,18 +23,23 @@ export class AppComponent {
     ["u", 21], ["v", 22], ["w", 23], ["x", 24], ["y", 25], ["z", 26]
   ]);
 
-  public textPrueba = "Hola Mundo  “ @ ß34'12 $%"
-  public encyptMessage: String = '';
+
 
   constructor() {
     this.n = this.abecedario.size;
+  }
+
+  encriptar(a: number, b: number) {
+    console.log("clicK")
+    this.a = a;
+    this.b = b;
     this.adjustText();
     this.validateCoprimos();
   }
 
   adjustText() {
-    this.textPrueba = this.textPrueba.toLowerCase();
-    this.textPrueba = this.textPrueba.replace(/[^a-z]/ig, "");
+    this.textValid = this.textACifrar.toLowerCase();
+    this.textValid = this.textValid.replace(/[^a-z]/ig, "");
   }
 
   validateCoprimos() {
@@ -43,7 +51,7 @@ export class AppComponent {
     if (this.a >= 0 && this.b <= this.n) {
       let contains: any;
       let encyptMessage: any = [];
-      for (const iterator of this.textPrueba) {
+      for (const iterator of this.textValid) {
         contains = this.abecedario.get(iterator);
         let newLetter = ((this.a * contains) + this.b) % this.n;
         for (const iterator2 of this.abecedario.entries()) {
@@ -54,7 +62,7 @@ export class AppComponent {
       }
       this.encyptMessage = String(encyptMessage).split(',').join('');
     }
-    console.log("nuevo Mensaje", this.encyptMessage )
+    console.log("nuevo Mensaje", this.encyptMessage)
   }
 
   maximoComunDivisor(a: number, b: number): any {

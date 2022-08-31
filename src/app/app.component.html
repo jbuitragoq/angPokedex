@@ -2,7 +2,7 @@
   <div class="containerPrincipal">
     <section class="title">
       <div class="vector"></div>
-      <span class="name">Cifrado Afín</span>
+      <span class="name">Cifrado Afín - ( C = a*m + b mod n)</span>
     </section>
     <section class="contentData">
       <span class="subTitle1">Encriptar</span>
@@ -10,17 +10,17 @@
         <div class="contentButton">
           <div class="constDecimacion">
             <span class="name">Constante Decimación (A)</span>
-            <input type="text" class="inputNumber" placeholder="costante (A)">
+            <input type="number" class="inputNumber" placeholder="costante (A)" [(ngModel)]="a">
           </div>
 
           <div class="constDecimacion">
             <span class="name">Constante Desplazamiento (B)</span>
-            <input type="text" class="inputNumber" placeholder="costante (B)">
+            <input type="number" class="inputNumber" placeholder="costante (B)" [(ngModel)]="b">
           </div>
 
           <div class="constDecimacion">
             <div class="contentButtom">
-              <button class="buttom"> <span class="nameButtom">Encriptar</span></button>
+              <button class="buttom"> <span class="nameButtom" (click)="encriptar(a,b)">Encriptar</span></button>
             </div>
           </div>
         </div>
@@ -28,14 +28,14 @@
         <div class="contentButton">
           <div class="constDecimacion">
             <span class="name">Texto a Cifrar</span>
-            <textarea class="textEncypt"></textarea>
+            <textarea class="textEncypt" [(ngModel)]="textACifrar"></textarea>
           </div>
         </div>
 
         <div class="contentButton">
           <div class="constDecimacion">
             <span class="name">Texto a Cifrado</span>
-            <textarea class="textEncypt"></textarea>
+            <textarea class="textEncypt"  [(ngModel)]="encyptMessage"></textarea>
           </div>
         </div>
       </div>
