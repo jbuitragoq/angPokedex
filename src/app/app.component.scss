@@ -337,3 +337,29 @@
     border-radius: 50px;
     margin: 0 12px;
 }
+
+.app-button-login {
+    display: flex;
+    border: none;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 16px;
+    width: 160px;
+    height: 40px;
+    background: #FFDC5D;
+    border-radius: 50px;
+    margin: 0 12px;
+}
+
+.app-button-login:hover {
+    background: #EFC52D;
+    color: #016D38;
+    border-color: #EFC52D;
+}
+
+.app-button-login:focus {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: 0 0 0 0.2rem #DDCC85;
+}

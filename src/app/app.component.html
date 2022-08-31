@@ -22,7 +22,7 @@
 
           <div class="constDecimacion">
             <div class="contentButtom">
-              <button class="buttom"> <span class="nameButtom" (click)="encriptar(a,b)">Encriptar</span></button>
+              <button class="app-button-login"> <span class="nameButtom" (click)="encriptar(a,b)">Encriptar</span></button>
             </div>
           </div>
         </div>
@@ -59,7 +59,7 @@
 
           <div class="constDecimacion">
             <div class="contentButtom">
-              <button class="buttom" disabled="true"> <span class="nameButtom" disabled="true">Encriptar</span></button>
+              <button class="app-button-login" disabled="true"> <span class="nameButtom" disabled="true">Des-Encriptar</span></button>
             </div>
           </div>
         </div>
@@ -84,15 +84,15 @@
   </div>
 </div>
 
-<div class="modalError">
+<div class="modalError" *ngIf="showError">
   <section class="contentError">
     <div class="imgContent">
       <img src="../assets/Group.png" alt="error">
     </div>
-    <span class="mensajeError">Error mENSAJE</span>
+    <span class="mensajeError">{{this.mensajeError}}</span>
     <div class="buttomError">
-      <button class="app-button-login2" type="submit" >
-        <span class="textButton">Regresar</span>
+      <button class="app-button-login2" type="submit" (click)="closeError()" >
+        <span class="textButton" >Cerrar</span>
      </button>
     </div>
   </section>

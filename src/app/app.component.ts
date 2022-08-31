@@ -14,6 +14,8 @@ export class AppComponent {
   public textACifrar = ""
   public textValid = ""
   public encyptMessage: String = '';
+  public mensajeError: string = "";
+  public showError = false;
   public mcd: any;
 
   public abecedario = new Map<string, number>([
@@ -44,7 +46,7 @@ export class AppComponent {
 
   validateCoprimos() {
     this.maximoComunDivisor(this.a, this.b)
-    this.mcd === 1 ? this.encrypt() : console.log("Los numeros a y b no son coprimos")
+    this.mcd === 1 ? this.encrypt() : this.viewError();
   }
 
   encrypt() {
@@ -61,6 +63,8 @@ export class AppComponent {
         }
       }
       this.encyptMessage = String(encyptMessage).split(',').join('');
+    } else {
+      this.viewError()
     }
     console.log("nuevo Mensaje", this.encyptMessage)
   }
@@ -70,4 +74,19 @@ export class AppComponent {
     return this.mcd = this.maximoComunDivisor(b, a % b);
   }
 
+  viewError() {
+    this.showError = true
+    if (this.mcd == 1) {
+      this.mensajeError = "Los numeros a y b no son coprimos"
+    }
+    if (this.a <= 0) {
+      this.mensajeError = "La Constante Decimación (A) debe ser mayor a Cero"
+    } else if (this.b >= this.n) {
+      this.mensajeError = "La Constante Desplazamiento (B) no puede ser mayor que n = 27"
+    }
+  }
+
+  closeError() {
+    this.showError = false
+  }
 }
