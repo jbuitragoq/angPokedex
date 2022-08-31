@@ -16,7 +16,7 @@
     padding: 24px;
     gap: 24px;
     max-width: 1044px;
-    height: 650px;
+    height: 700px;
     background: #ffffff;
     border: 1px solid #eeeeee;
     border-radius: 8px;
@@ -74,7 +74,7 @@
         padding: 24px;
         gap: 24px;
         max-width: 950px;
-        height: 500px;
+        height: 560px;
         background: #fbfbfb;
         border-radius: 8px;
         flex: none;
@@ -205,4 +205,33 @@
             }
         }
     }
+}
+
+.contentFlex {
+    grid-row: auto;
+    border: ridge;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px -1px 7px 1px rgba(0, 0, 0, 0.6);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 11rem;
+}
+
+.textEncypt {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 8px;
+    gap: 4px;
+    max-width: 934px;
+    height: 161px;
+    background: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
 }
