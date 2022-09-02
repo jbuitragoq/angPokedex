@@ -70,14 +70,14 @@ export class AppComponent {
   }
 
   maximoComunDivisor(a: number, b: number): any {
-    if (b == 0) return this.mcd = a
-    return this.mcd = this.maximoComunDivisor(b, a % b);
+    if (this.n == 0) return this.mcd = a
+    return this.mcd = this.maximoComunDivisor(this.n, a % this.n);
   }
 
   viewError() {
     this.showError = true
     if (this.mcd == 1) {
-      this.mensajeError = "Los numeros a y b no son coprimos"
+      this.mensajeError = "Los numeros a y n no son coprimos"
     }
     if (this.a <= 0) {
       this.mensajeError = "La Constante Decimación (A) debe ser mayor a Cero"
