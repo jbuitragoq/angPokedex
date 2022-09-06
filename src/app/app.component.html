@@ -5,7 +5,6 @@
       <span class="name">Cifrado Afín Módulo {{n}}</span>
     </section>
     <section class="contentData">
-
       <!-- Cifrar -->
       <span class="subTitle1">Cifrar Mensaje - ( C = a*m + b mod n)</span>
       <div class="contentFlex">
@@ -80,9 +79,30 @@
           </div>
         </div>
       </div>
+
+      <div class="contentMessage" >
+        <div class="loader" *ngIf="show">
+          <div class="face">
+            <div class="circle"></div>
+          </div>
+          <div class="face">
+            <div class="circle"></div>
+          </div>
+        </div>
+
+        <div class="content contenScroll" *ngIf="show" style="overflow-y: scroll; height: 18rem; padding-right: 13px;">
+          <span class="titleInfo">La(s) letra(s) que más se repiten:</span>
+          <ul *ngFor="let item2 of arrMore">
+            <span style="color: darkred;padding: 5px;margin-left: -3.1rem;font-size: 14px;"> - <b style="text-transform:uppercase;">{{item2.name}}</b> con <b>{{item2.value}}</b> repeticion(es)</span>
+          </ul>
+          <br>
+          <span class="titleInfo">La(s) letra(s) que menos se repiten:</span>
+          <ul *ngFor="let item of arrLess">
+            <span style="color: darkred;padding: 5px;margin-left: -3.1rem;font-size: 14px;"> - <b style="text-transform:uppercase;">{{item.name}}</b> con <b>{{item.value}}</b> repeticion(es)</span>
+          </ul>
+        </div>
+      </div>
     </section>
-
-
   </div>
 </div>
 

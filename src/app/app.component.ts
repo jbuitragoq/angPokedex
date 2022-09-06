@@ -1,4 +1,3 @@
-import { ThisReceiver } from '@angular/compiler';
 import { Component } from '@angular/core';
 
 @Component({
@@ -12,6 +11,8 @@ export class AppComponent {
   public a!: number;
   public b!: number;
   public n: number = 0;
+  public mcd!: number;
+  public i!: number;
   public textACifrar = ""
   public textValid = ""
   public encyptMessage: String = '';
@@ -19,8 +20,10 @@ export class AppComponent {
   public mensajeError: string = "";
   public showError = false;
   public decryptMessage2: any;
-  public mcd: any;
-  public i!: number;
+  public content: any = [];
+  public arrLess: any;
+  public arrMore: any;
+  public show: boolean = false;
 
   public abecedario = new Map<string, number>([
     ["a", 0], ["b", 1], ["c", 2], ["d", 3], ["e", 4], ["f", 5], ["g", 6],
@@ -28,7 +31,7 @@ export class AppComponent {
     ["ñ", 14], ["o", 15], ["p", 16], ["q", 17], ["r", 18], ["s", 19], ["t", 20],
     ["u", 21], ["v", 22], ["w", 23], ["x", 24], ["y", 25], ["z", 26]
   ]);
-  content: any = [];;
+
 
   constructor() {
     this.n = this.abecedario.size;
@@ -159,9 +162,16 @@ export class AppComponent {
 
   takeMoreless(myMap: Map<string, number>) {
     //Valid Mayores
-    let aux: Map<string, number> = this.setMap(myMap, 1, 0);
+    console.log("mapPrincipal", myMap)
+    let auxMore: Map<string, number> = this.setMap(myMap, 1, 0);
+    this.arrMore = Array.from(auxMore, ([name, value]) => ({ name, value }));
+    console.log("Aux More", auxMore)
     //Valid menore
     let auxLess: Map<string, number> = this.setMap(myMap, 2, 1);
+    this.arrLess = Array.from(auxLess, ([name, value]) => ({ name, value }));
+    console.log("Aux Less", auxLess)
+    this.show = true;
+
   }
 
   setMap(myMap: any, consult: number, cont: number) {
@@ -175,8 +185,11 @@ export class AppComponent {
         aux.set(entry[0], entry[1])
       } else if (entry[1] == cont) {
         aux.set(entry[0], entry[1])
+      } else if (entry[1] >= cont) {
+        cont = entry[1];
       }
     }
+    console.log("Aux", aux)
     return aux;
   }
 
