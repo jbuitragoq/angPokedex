@@ -65,6 +65,7 @@ export class AppComponent {
         }
       }
       this.encyptMessage = String(encyptMessage).split(',').join('');
+      this.calculateConcurrent(this.encyptMessage)
     } else {
       this.viewError()
     }
@@ -140,5 +141,43 @@ export class AppComponent {
     }
     return this.content;
   }
-}
 
+  //Calcular Estadistica de mensaje cifrado
+  calculateConcurrent(msg: any) {
+    let myMap = new Map<string, number>();
+    for (const iterator of msg) {
+      let coincidence = 0;
+      for (const iterator2 of msg) {
+        if (iterator == iterator2) {
+          coincidence += 1;
+        }
+      }
+      myMap.set(iterator, coincidence)
+    }
+    this.takeMoreless(myMap);
+  }
+
+  takeMoreless(myMap: Map<string, number>) {
+    //Valid Mayores
+    let aux: Map<string, number> = this.setMap(myMap, 1, 0);
+    //Valid menore
+    let auxLess: Map<string, number> = this.setMap(myMap, 2, 1);
+  }
+
+  setMap(myMap: any, consult: number, cont: number) {
+    let aux = new Map<string, number>();
+    let consulta;
+    for (const entry of myMap.entries()) {
+      consult == 1 ? consulta = entry[1] > cont : consulta = entry[1] < cont
+      if (consulta) {
+        cont = entry[1];
+        aux.clear();
+        aux.set(entry[0], entry[1])
+      } else if (entry[1] == cont) {
+        aux.set(entry[0], entry[1])
+      }
+    }
+    return aux;
+  }
+
+}
