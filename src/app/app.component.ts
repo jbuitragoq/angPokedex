@@ -46,6 +46,7 @@ export class AppComponent {
 
   adjustText(text?: any) {
     this.textValid = this.replaceAccents(text)
+    this.textValid = this.replaceNumber(this.textValid)
     this.textValid = this.textValid.replace(/[^a-zñvÑV]/ig, "");
     this.textValid = this.textValid.toLowerCase();
   }
@@ -61,6 +62,21 @@ export class AppComponent {
     return r;
   }
 
+  replaceNumber = (s: string) => {
+    var r = s.toLowerCase();
+    r = r.replace(new RegExp("[1]", 'g'), "UNO");
+    r = r.replace(new RegExp("[2]", 'g'), "DOS");
+    r = r.replace(new RegExp("[3]", 'g'), "TRES");
+    r = r.replace(new RegExp("[4]", 'g'), "CUATRO");
+    r = r.replace(new RegExp("[5]", 'g'), "CINCO");
+    r = r.replace(new RegExp("[6]", 'g'), "SEIS");
+    r = r.replace(new RegExp("[7]", 'g'), "SIETE");
+    r = r.replace(new RegExp("[8]", 'g'), "OCHO");
+    r = r.replace(new RegExp("[9]", 'g'), "NUEVE");
+    r = r.replace(new RegExp("[0]", 'g'), "CERO");
+    return r;
+  }
+  
   validateCoprimos() {
     this.maximoComunDivisor(this.a, this.n)
     this.mcd === 1 ? this.encrypt() : this.viewError();
