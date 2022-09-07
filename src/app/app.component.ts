@@ -45,8 +45,20 @@ export class AppComponent {
   }
 
   adjustText(text?: any) {
-    this.textValid = text.replace(/[^a-zñvÑV]/ig, "");
+    this.textValid = this.replaceAccents(text)
+    this.textValid = this.textValid.replace(/[^a-zñvÑV]/ig, "");
     this.textValid = this.textValid.toLowerCase();
+  }
+
+  replaceAccents = (s: string) => {
+    var r = s.toLowerCase();
+    r = r.replace(new RegExp("[àáâãäåá]", 'g'), "a");
+    r = r.replace(new RegExp("[èéêë]", 'g'), "e");
+    r = r.replace(new RegExp("[ìíîï]", 'g'), "i");
+    r = r.replace(new RegExp("[òóôõö]", 'g'), "o");
+    r = r.replace(new RegExp("[ùúûü]", 'g'), "u");
+    r = r.replace(new RegExp("[ýÿ]", 'g'), "y");
+    return r;
   }
 
   validateCoprimos() {
