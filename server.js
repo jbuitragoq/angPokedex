@@ -14,10 +14,10 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Serve only the static files form the dist directory
-app.use(express.static('./dist/cifrado-afin'));
+app.use(express.static('./dist/pokedex-app'));
 
 app.get('/*', (req, res) =>
-    res.sendFile('index.html', { root: 'dist/cifrado-afin/' }),
+    res.sendFile('index.html', { root: 'dist/pokedex-app/' }),
 );
 
 // Start the app by listening on the default Heroku port

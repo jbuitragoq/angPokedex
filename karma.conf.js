@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/cifrado-afin'),
+      dir: require('path').join(__dirname, './coverage/pokedex-app'),
       subdir: '.',
       reporters: [
         { type: 'html' },
