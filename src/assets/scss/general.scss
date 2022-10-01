@@ -1,0 +1,17 @@
+.card {
+    background: var(--white);
+    border-radius: 0.5rem;
+}
+
+.tooltip {
+    visibility: hidden;
+    width: 8rem;
+    background-color: var(--black);
+    color: var(--white);
+    text-align: center;
+    border-radius: 0.5rem;
+    padding: 0.2rem 0rem;
+    position: absolute;
+    z-index: 1;
+    top: -1rem;
+}
